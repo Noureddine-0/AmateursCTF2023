@@ -38,5 +38,5 @@ while c:
     c //= 128
 Listed_flag.append(byte_string.decode()[::-1])
 
-print("amateursCTF{" + "_".join(Listed_flag) + "}")
+print("amateursCTF{"+ "_".join(Listed_flag) + "}")
 
