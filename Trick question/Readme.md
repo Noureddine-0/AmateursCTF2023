@@ -69,7 +69,7 @@ After that we saw a for loop that iterates on the r list which contains the zero
               96 LOAD_CONST           (None)
               98 RETURN_VALUE
 ```
-because we are reversing the program we only need the output so we catch it and its there where the author gives a hint to continue and its the use of pycdc decompiler to decompile Code objects (Note that at first time i had no idea about pycdc or i could simply use it to decompile the pyc challenge), the output contains a Code object that we need to decompile but i wasnt able to decompile it that's why i got the idea of using it to creat a pyc file then use pycdc,i'll put the script to create the pyc file <a href="https://github.com/Noureddine-0/AmateursCTF2023/blob/main/Trick%20question/script.py">here</a> , just after decompiling er got a python code that could simply be reversed.
+because we are reversing the program we only need the output so we catch it and its there where the author gives a hint to continue and its the use of pycdc decompiler to decompile Code objects (Note that at first time i had no idea about pycdc or i could simply use it to decompile the pyc challenge), the output contains a Code object that we need to decompile but i wasnt able to decompile it that's why i got the idea of using it to creat a pyc file then use pycdc,i'll put the script to create the pyc file <a href="https://github.com/Noureddine-0/AmateursCTF2023/blob/main/Trick%20question/script.py">here</a> , just after decompiling we got a python code that we could simply <a href="https://github.com/Noureddine-0/AmateursCTF2023/blob/main/Trick%20question/solve.py">reverse</a>.
 
 ## Solution
 ```amateursCTF{PY7h0ns_ar3_4_f4m1lY_0f_N0Nv3nom0us_Sn4kes}```
