@@ -3,17 +3,16 @@
 ## Trick question
 
 >Which one do you hate more: decompiling pycs or reading Python bytecode disassembly? Just kidding that's a trick question.
-
+>
 >Run with Python version 3.10.
-
+>
 >Flag is amateursCTF{[a-zA-Z0-9_]+}
-
-
+>
 >Author:flocto
 
 
-The challenge is given a pyc program compiled with Python version3.10 , since this is the first time i encounter a pyc program i found some problems solving the challenge.I started by learning some byecode instructions using the dis module in python , after this i found a great tool named pydisasm that was the first push in this challenge , i'll try to make it as simple as possible so let's start by opening a terminal and typing ```pydisasm <the_pyc_program>```
-We found two tuple where the first contains zeroes and ones and the second hold some base64 encoded strings , lookin at the disassembly we saw that the program creates two list which contains the content of the tuple :
+The challenge is given a pyc program compiled with Python version3.10 , since this is the first time i encounter a pyc program i found some problems solving the challenge.I started by learning some bytecode instructions using the dis module in python , after this i found a great tool named pydisasm that was the first push in this challenge , i'll try to make the solution simple so let's start by opening a terminal and typing ```pydisasm <the_pyc_program>```
+We found two tuple where the first contains zeroes and ones and the second holds some base64 encoded strings , lookin at the disassembly we saw that the program creates two lists where each contains the content of a tuple :
 ```
 
    1:         8 BUILD_LIST           0
@@ -25,7 +24,7 @@ We found two tuple where the first contains zeroes and ones and the second hold 
               20 LIST_EXTEND          1
               22 STORE_NAME           (x)
 ```
-After that we saw a for loop that iterates on the r list which contains the zeroes and ones , if the element popped from the evaluation stack is 0 it continue , otherwise it reverse the string , after iterating over all the elements of r it reverse x , join its elements with 'A' , decode the content with the b64decode (Note that it uses a function named b64decode which make use of b64decode method of the base64 module) function and execute whatever the output .
+After that we saw a for loop that iterates on the r list which contains the zeroes and ones , if the element popped from the evaluation stack is 0 it continues , otherwise it reverses the string x[i], after iterating over all the elements of r it reverse x , join its elements with 'A' , decode the content with the b64decode (Note that it uses a function named b64decode which make use of b64decode method of the base64 module) function .
 ```
 3:          24 LOAD_NAME            (range)
               26 LOAD_NAME            (len)
@@ -72,5 +71,5 @@ After that we saw a for loop that iterates on the r list which contains the zero
 ```
 because we are reversing the program we only need the output so we catch it and its there where the author gives a hint to continue and its the use of pycdc decompiler to decompile Code objects (Note that at first time i had no idea about pycdc or i could simply use it to decompile the pyc challenge), the output contains a Code object that we need to decompile but i wasnt able to decompile it that's why i got the idea of using it to creat a pyc file then use pycdc,i'll put the script to create the pyc file <a href="https://github.com/Noureddine-0/AmateursCTF2023/blob/main/Trick%20question/script.py">here</a> , just after decompiling er got a python code that could simply be reversed.
 
-##Solution
+## Solution
 ```amateursCTF{PY7h0ns_ar3_4_f4m1lY_0f_N0Nv3m0us_Sn4kes}```
