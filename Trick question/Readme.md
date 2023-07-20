@@ -1,4 +1,4 @@
-#AmateursCTF 2023
+# AmateursCTF 2023
 
 ## Trick question
 
